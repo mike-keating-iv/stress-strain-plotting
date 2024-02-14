@@ -19,5 +19,5 @@ Ensure you have python3 installed on your system. (https://wiki.python.org/moin/
 ## Install required modules
 Use pip package installer
 ```bash
-pip install -r requirements.txt
+pip install -r PATH/TO/requirements.txt
 ```
