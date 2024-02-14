@@ -21,3 +21,10 @@ Use pip package installer
 ```bash
 pip install -r PATH/TO/requirements.txt
 ```
+## Run script
+```bash
+python PATH/TO/bluehill-universal-overlay-tool.py
+```
+OR 
+
+Simply double click the .py file.
