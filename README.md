@@ -5,6 +5,14 @@ Running the script will launch a GUI prompting user to select a folder containin
 
 Program exports .xlsx file with single stress strain chart and data from all imported .csv files. Chart can then be further formatted within Excel to suit the user's needs, avoiding knowledge of a programming language as a barrier for chart customization. 
 
+Note:Ensure that the export .csv file from Bluehill is in the following format and units. See sample_csv_exports for examples.
+
+| Time | Displacement | Force  |
+|------|--------------|--------|
+| (s)  | (in)         | (lbf)  |
+| 0    | 0            | 0      |
+| 0.02 | 0.0014       | 0.0081 |
+
 # INSTALLATION:
 Ensure you have python3 installed on your system. (https://wiki.python.org/moin/BeginnersGuide/Download)
 
