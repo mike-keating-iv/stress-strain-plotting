@@ -26,6 +26,7 @@ def select_directory():
     folder_path = filedialog.askdirectory(initialdir=SCRIPT_DIRECTORY)
     if folder_path:
         print(f"Selected folder: {folder_path}")
+        tk.messagebox.showinfo("Folder Selected", f"Folder selected:\n{folder_path}")
 
 # Function to process and chart data from each .csv file
 def process_files_in_folder():
@@ -68,8 +69,11 @@ def process_files_in_folder():
 
         # Ask user where to save excel export
         export_path = filedialog.asksaveasfilename(defaultextension='.xlsx')
-        wb.save(export_path)    
+        wb.save(export_path)
+        tk.messagebox.showinfo("Information", f"Excel Overlay Saved. GUI will now close.\nSave location:\n{export_path}")
+        root.quit()    
     else:
+        tk.messagebox.showinfo("Error", f"Error: No CSV File Found in {folder_path} ")
         print("Error: No CSV File Found")
 
 def read_csv_to_excel(csv_file):
