@@ -70,7 +70,7 @@ def process_files_in_folder():
         # Ask user where to save excel export
         export_path = filedialog.asksaveasfilename(defaultextension='.xlsx')
         wb.save(export_path)
-        tk.messagebox.showinfo("Information", f"Excel Overlay Saved. GUI will now close.\nSave location:\n{export_path}")
+        tk.messagebox.showinfo("Information", f"Excel Overlay Saved. Program will now close.\nSave location:\n{export_path}")
         root.quit()    
     else:
         tk.messagebox.showinfo("Error", f"Error: No CSV File Found in {folder_path} ")
