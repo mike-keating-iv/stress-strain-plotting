@@ -28,6 +28,7 @@ def select_directory():
         print(f"Selected folder: {folder_path}")
         tk.messagebox.showinfo("Folder Selected", f"Folder selected:\n{folder_path}")
 
+
 # Function to process and chart data from each .csv file
 def process_files_in_folder():
     csv_files = [file for file in glob.glob(os.path.join(folder_path,'*.csv'))]
