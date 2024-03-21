@@ -67,15 +67,21 @@ def process_files_in_folder():
         #Set Overlay to Active Sheet and add chart    
         ws = wb['Overlay']
         ws.add_chart(chart, "A1")
-
         # Ask user where to save excel export
-        export_path = filedialog.asksaveasfilename(defaultextension='.xlsx')
-        wb.save(export_path)
-        tk.messagebox.showinfo("Information", f"Excel Overlay Saved. Program will now close.\nSave location:\n{export_path}")
-        root.quit()    
+        #export_path = filedialog.asksaveasfilename(defaultextension='.xlsx')
+        #wb.save(export_path)
+        #tk.messagebox.showinfo("Information", f"Excel Overlay Saved. Program will now close.\nSave location:\n{export_path}")
+        #root.quit()  
     else:
         tk.messagebox.showinfo("Error", f"Error: No CSV File Found in {folder_path} ")
         print("Error: No CSV File Found")
+
+def export_to_excel():
+    # Ask user where to save excel export
+    export_path = filedialog.asksaveasfilename(defaultextension='.xlsx')
+    wb.save(export_path)
+    tk.messagebox.showinfo("Information", f"Excel Overlay Saved. Program will now close.\nSave location:\n{export_path}")
+    root.quit()
 
 def read_csv_to_excel(csv_file):
     global wb
@@ -128,6 +134,7 @@ gauge_entry_label = ttk.Label(root, text="Enter Gauge Length (inches):")
 gauge_entry_label.pack()
 gauge_entry = ttk.Entry(root, textvariable=gauge_length)
 gauge_entry.delete(0,tk.END)
+# Insert 2 inches as default gauge length
 gauge_entry.insert(0,"2.0")
 gauge_entry.pack()
 
@@ -137,16 +144,26 @@ denier_entry_label = ttk.Label(root, text="Enter Fiber Denier:")
 denier_entry_label.pack()
 denier_entry = ttk.Entry(root, textvariable=denier)
 denier_entry.delete(0,tk.END)
+# Insert 40 as default denier
 denier_entry.insert(0,"40")
 denier_entry.pack()
 
 
 # Create a label for instructions on processing files to excel
-process_files_instructions_label = ttk.Label(root, text = "\n4. Click Overlay and Save Chart to Excel Sheet to generate an excel file with the curves overlaid on a single chart, which can be formatted in Excel \nEach series in the generated chart is titled after the file name of each .csv file in the selected folder")
+process_files_instructions_label = ttk.Label(root, text = "4. Select Process Files in Folder to add curves from selected folder to the chart. \nRepeat with other folders (denier) if needed. \nClick Export to Excel File when finished ")
 process_files_instructions_label.pack(pady=10)
+
+# Create a frame for the bottom two buttons
+bottom_frame = tk.Frame(root)
+bottom_frame.pack(side = 'bottom')
+
 # Create a button to run the process_files_in_folder command
-process_button = ttk.Button(root, text="Overlay and Save Chart to Excel Sheet", command=process_files_in_folder)
-process_button.pack(side='top', pady=20)
+process_button = ttk.Button(bottom_frame, text="Process Files in Folder", command=process_files_in_folder)
+process_button.pack(side='left', pady=20)
+
+# Create a button to save processed files to excel
+export_to_excel_button = ttk.Button(bottom_frame, text="Export to Excel File", command=export_to_excel)
+export_to_excel_button.pack(side='right',padx=10)
 
 # Set GUI theme
 sv_ttk.set_theme("light")
