@@ -166,7 +166,7 @@ export_to_excel_button = ttk.Button(bottom_frame, text="Export to Excel File", c
 export_to_excel_button.pack(side='right',padx=10)
 
 # Set GUI theme
-sv_ttk.set_theme("light")
+#sv_ttk.set_theme("light")
 
 # Run the GUI
 root.mainloop()
