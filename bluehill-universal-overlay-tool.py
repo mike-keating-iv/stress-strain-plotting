@@ -58,7 +58,7 @@ def export_to_excel():
     ws = wb['Overlay']
 
     # Create Scatter Chart
-    chart = ScatterChart()
+    chart = ScatterChart(scatterStyle='smoothMarker')
     chart.title = "Tenacity vs. Displacement"
     chart.x_axis.title = 'Elongation (%)'
     chart.y_axis.title = 'Tenacity (gf/den)'
@@ -78,6 +78,7 @@ def export_to_excel():
         x_data = Reference(ws, min_col=4, min_row=2, max_row=ws.max_row)
         y_data = Reference(ws, min_col=5, min_row = 2, max_row=ws.max_row)
         series = Series(y_data,x_data, title_from_data=False, title=sheet)
+        series.smooth = True
         chart.series.append(series)
         
     #Set Overlay to Active Sheet and add chart    
@@ -107,6 +108,12 @@ def read_csv_to_excel(csv_file):
     # Calculate tenacity (gf/den) based on denier
     # 1 lbf = 453.59237 gf
     df['tenacity(gf/den)'] = (df['Force__(lbf)']*453.59237) / denier.get()
+
+    # Drop all rows after the row with maximum force
+    max_force_index = df['Force__(lbf)'].idxmax()
+    df = df.loc[:max_force_index]
+    
+
    
     #Convert df to rows
     rows = dataframe_to_rows(df, index=False)
