@@ -1,4 +1,4 @@
-# bluehill-universal-overlay-tool
+# stress-strain-plotting
 Tool to take multiple raw data export data files from Instron Bluehill Universal software (in .csv format) and overlay them on a single stress strain axis. 
 
 Running the script will launch a GUI prompting user to select a folder containing raw data .csv files from Instron Bluehill Universal, as well as the gauge length of Instron machine and denier of tensile sample. User should populate the chosen folder beforehand with the desired files - each file should represent 1 curve/specimen of interest. Currently there is no functionality to "average" individual specimens (from the same sample) into one representave file.
